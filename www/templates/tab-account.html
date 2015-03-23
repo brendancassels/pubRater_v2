@@ -1,0 +1,81 @@
+<ion-view view-title="Profile">
+  
+  <ion-content>
+    
+    <ion-list>
+    
+    <!--<ion-toggle  ng-model="settings.enableFriends">
+		Male?    
+	</ion-toggle> -->
+	
+	<!--<div class="btn-group gender-button" role="group" aria-label="...">
+   		<input type="radio" class="btn btn-default" data-target="male-socks">Male</input>
+   		<input type="radio" class="btn btn-default" data-target="female-socks">Female</input>
+	</div> -->
+
+		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+			<ti-segmented-control-button class="button-positive" title="'Male'"></ti-segmented-control-button>
+			<ti-segmented-control-button class="button-positive" title="'Female'" selected></ti-segmented-control-button>
+		</ti-segmented-control>
+    
+    <ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+      <ti-segmented-control-button class="button-positive" title="'Single'"></ti-segmented-control-button>
+      <ti-segmented-control-button class="button-positive" title="'Relationship'" selected></ti-segmented-control-button>
+    </ti-segmented-control>
+
+<!--
+    <ion-toggle  ng-model="settings.relationship">
+        In a Relationship?
+    </ion-toggle>
+-->
+
+    <div class="list">
+  		<label class="item item-input item-select">
+    	<div class="input-label">
+      		D.O.B.
+    	</div>
+    	<select>
+      		<option>1982</option>
+      		<option selected>1983</option>
+      		<option>1984</option>
+    	</select>
+  		</label>
+	   </div>
+    
+    <div class="list">
+      <label class="item item-input item-select">
+      <div class="input-label">
+          Profession
+      </div>
+      <select>
+          <option>Office</option>
+          <option selected>Construction</option>
+          <option>Teaching</option>
+          <option>Retail</option>
+          <option>Student</option>
+      </select>
+      </label>
+    </div>
+
+    <div class="list">
+      <label class="item item-input item-select">
+      <div class="input-label">
+          Preferred Beverage
+      </div>
+      <select>
+          <option>Beer</option>
+          <option selected>Spirits</option>
+          <option>Wine</option>
+          <option>Cocktails</option>
+      </select>
+      </label>
+    </div>
+
+    </ion-list>
+    <button class="button button-block button-positive">
+  		Save
+	   </button>
+  
+  </ion-content>
+
+</ion-view>
