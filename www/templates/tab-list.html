@@ -1,16 +1,13 @@
 <ion-view view-title="List">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="venue in venues" type="item-text-wrap" href="#/tab/venues/{{venue.id}}">
-        <img ng-src="{{venue.face}}">
-        <h2>{{venue.name}}</h2>
-        <p>{{venue.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(venue)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+  <ion-content padding="true">
+    <div class="list">
+      <a ng-repeat="place in places" 
+        href="#/tab/list/place/{{place.id}}" 
+        class="item item-icon-left">
+      <i class='icon fa {{ place.attributes.Venue_Name }}'></i>
+          <h2>{{ place.attributes.Venue_Name }}</h2>
+          <h4>{{ place.attributes.Venue_Website }}</h4>
+      </a>
+    </div>
   </ion-content>
 </ion-view>
