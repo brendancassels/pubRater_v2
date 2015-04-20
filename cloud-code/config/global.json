@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.2"
+  },
+  "applications": {
+    "PubRater_v1": {
+      "applicationId": "AJg4F48BJVT3ldknZtpKUi95OVFlqbhCSKeH051l",
+      "masterKey": "CD2BbtIFL7TTu7d1YkPLyem7Xq89L9NY2e2cn7SM"
+    },
+    "_default": {
+      "link": "PubRater_v1"
+    }
+  }
+}

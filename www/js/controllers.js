@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
             } 
             var name = place.attributes.Venue_Name;
             var description = $filter('hrefToJS')(place.attributes.Venue_Website);
-            var content = "<div><strong>" + name + "</strong><br>" + description + "<br><a href='#/tab/list/tab-venues/" + place.id + "' class='button button-small button-stable' style='width: 100%; margin-top: 10px;'>View</a></div>";
+            var content = "<div><strong>" + name + "</strong><br>" + description + "<br><a href='#/tab/list/place/" + place.id + "' class='button button-small button-stable' style='width: 100%; margin-top: 10px;'>View</a></div>";
             var compiled = $compile(content)($scope);
             var infowindow = new google.maps.InfoWindow({
               content: compiled[0]
@@ -79,7 +79,7 @@ angular.module('starter.controllers', [])
  //      showBackdrop: false
  //    });
 
-	// var Places = Parse.Object.extend("Venue");
+ // var Places = Parse.Object.extend("Venue");
  //    var query = new Parse.Query(Places);
 
  //    query.find({
@@ -116,9 +116,9 @@ angular.module('starter.controllers', [])
     query.equalTo("objectId", $stateParams.id);
     query.first({
       success: function(place) {
-        $scope.place = place;
-        $scope.map.set(new google.maps.LatLng(place.attributes.Venue_Location.latitude, place.attributes.Venue_Location.longitude));
-        $scope.map.setZoom(14);
+        $scope.place = place; 
+        $scope.map.setCenter(new google.maps.LatLng(place.attributes.Venue_Location.latitude, place.attributes.Venue_Location.longitude));
+        $scope.map.setZoom(16);
         var marker = new google.maps.Marker({
           map: $scope.map,
           position: new google.maps.LatLng(place.attributes.Venue_Location.latitude, place.attributes.Venue_Location.longitude)
