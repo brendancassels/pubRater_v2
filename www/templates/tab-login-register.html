@@ -1,0 +1,44 @@
+<ion-view title="Login">
+
+  <ion-content scroll="true" padding="false">
+    
+    <div class="padding">
+      <ti-segmented-control on-select="selectLoginRegister($index)" style="width: 100%;">
+          <ti-segmented-control-button class="button-positive" title="'Register'" selected></ti-segmented-control-button>
+          <ti-segmented-control-button class="button-positive" title="'Login'"></ti-segmented-control-button>
+      </ti-segmented-control>
+    </div>
+
+    <div class="list" ng-show="registerLogin">
+      <label class="item item-input">
+        <input type="text" placeholder="First Name" ng-model="registerFirstName">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Last Name" ng-model="registerLastName">
+      </label>
+      <label class="item item-input">
+        <input type="email" placeholder="Email" ng-model="registerEmail">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="registerPassword">
+      </label>
+      <div class="padding">
+        <button ng-click="register(registerFirstName, registerLastName, registerEmail, registerPassword)" class="button button-positive" style="width: 100%;">Register</button>
+      </div>
+    </div>
+
+    <div class="list" ng-hide="registerLogin">
+      <label class="item item-input">
+        <input type="text" placeholder="Email" ng-model="loginEmail">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="loginPassword">
+      </label>
+      <div class="padding">
+        <button class="button button-positive" style="width: 100%;" ng-click="login(loginEmail, loginPassword)">Login</button>
+      </div>
+    </div>    
+
+  </ion-content>
+
+</ion-view>

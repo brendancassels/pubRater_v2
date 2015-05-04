@@ -48,12 +48,30 @@ angular.module('starter', ['ionic', 'starter.filters', 'starter.controllers', 's
       }
     }
   })
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.login-register', {
+    url: "/login-register",
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-map': {
+        templateUrl: 'templates/tab-login-register.html',
+        controller: 'LoginRegisterCtrl'
+      }
+    }
+  })    
+  .state('tab.profile', {
+    url: '/profile',
+    views: {
+      'tab-profile': {
+        templateUrl: 'templates/tab-profile.html',
+        controller: 'ProfileCtrl' 
+      }
+    }
+  })
+  .state('tab.rate', {
+    url: '/list/rate/:id',
+    views: {
+      'tab-rate': {
+        templateUrl: 'templates/tab-rate.html',
+        controller: 'RateCtrl'
       }
     }
   });

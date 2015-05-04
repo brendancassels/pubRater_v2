@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
             } 
             var name = place.attributes.Venue_Name;
             var description = $filter('hrefToJS')(place.attributes.Venue_Website);
-            var content = "<div><strong>" + name + "</strong><br>" + description + "<br><a href='#/tab/list/place/" + place.id + "' class='button button-small button-stable' style='width: 100%; margin-top: 10px;'>View</a></div>";
+            var content = "<div><strong>" + name + "</strong><br>" + description + "<br><a href='#/tab/list/place/" + place.id + "' class='button button-small button-positive' style='width: 100%; margin-top: 10px;'>View</a></div>";
             var compiled = $compile(content)($scope);
             var infowindow = new google.maps.InfoWindow({
               content: compiled[0]
@@ -135,14 +135,97 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('VenueDetailCtrl', function($scope, $stateParams, Places) {
+.controller('VenueDetailCtrl', function($scope, $stateParams, $state, Places) {
   $scope.place = Places.get($stateParams.placeId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('LoginRegisterCtrl', function($scope, $ionicPopup, $state, $ionicHistory) {
+ 
+  $scope.registerLogin = true;
+
+  $scope.selectLoginRegister = function(index) {
+
+    if (index === 0) {
+      //alert("x");
+      $scope.registerLogin = true;
+      // $scope.login = false;
+    } else {
+      //$scope.register = true;
+      $scope.registerLogin = false;
+    }
+
+    $scope.$apply();
+  }
+
+  $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword) {
+
+    if (registerFirstName && registerFirstName && registerEmail && registerPassword) {
+
+      // create a new user object (note the the username and email are the same)
+      var user = new Parse.User();
+      user.set("username", registerEmail);
+      user.set("password", registerPassword);
+      user.set("email", registerEmail);
+       
+      // set the other fields
+      user.set("firstName", registerFirstName);
+      user.set("lastName", registerLastName);
+ 
+
+      user.signUp(null, {
+        success: function(user) {
+
+          $ionicHistory.nextViewOptions({
+            disableBack: true
+          });
+
+          $state.go('tab.tab-map');
+
+        },
+        error: function(user, error) {
+
+          var alertPopup = $ionicPopup.alert({
+             title: 'Error',
+             template: 'Unable to successfully register'
+           });
+        }
+      });
+
+    } else {
+
+      var alertPopup = $ionicPopup.alert({
+         title: 'Missing Fields',
+         template: 'Please enter all the required fields'
+       });
+    }
+  }
+
+  $scope.login = function(loginUsername, loginPassword) {
+
+    Parse.User.logIn(loginUsername, loginPassword, {
+      success: function(user) {
+        var alertPopup = $ionicPopup.alert({
+           title: 'Welcome Back',
+           template: 'It\'s great to see you again!'
+         });
+
+        $ionicHistory.nextViewOptions({
+          disableBack: true
+        });
+
+        $state.go('tab.dashboard');
+      },
+      error: function(user, error) {
+        var alertPopup = $ionicPopup.alert({
+           title: 'Error',
+           template: 'Unable to log you in'
+         });
+      }
+    });
+
+  }
+
+
 })
 
 .controller('ListCtrl', function($scope, $ionicLoading) {
@@ -161,7 +244,16 @@ angular.module('starter.controllers', [])
   .then(function(places) {
     $ionicLoading.hide();
   });
+})
+
+.controller('RateCtrl', function($scope, $ionicLoading) {
+  debugger;
+  // $scope.loading = $ionicLoading.show({
+  //   content: 'Loading...',
+  //   showBackdrop: false
+  // });
 });
+
 // var app = angular.module('Gender', ['ti-segmented-control']);
 // app.controller('AppCtrl', function($scope){
 //   $scope.buttonClicked = function(index){

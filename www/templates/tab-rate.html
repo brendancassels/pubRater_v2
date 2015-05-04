@@ -1,0 +1,53 @@
+<ion-view view-title="Profile">  
+	<ion-content scroll="true" padding="false">
+		<ion-list>
+			<div class="padding">
+	    		<h2>Time of Rating</h2>
+	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+	    			<ti-segmented-control-button class="button-positive" title="'Now'"></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Past'" selected></ti-segmented-control-button>
+	    		</ti-segmented-control>
+	      	</div>
+	      	<div class="padding">
+	    		<h2>How Busy?</h2>
+	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+	    			<ti-segmented-control-button class="button-positive" title="'Empty'"></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Average'" selected></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Packed'"></ti-segmented-control-button>
+	    		</ti-segmented-control>
+	      	</div>
+	      	<div class="padding">
+	    		<h2>Service Quality?</h2>
+	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+	    			<ti-segmented-control-button class="button-positive" title="'Shit'"></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'OK'" selected></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Awesome'"></ti-segmented-control-button>
+	    		</ti-segmented-control>
+	      	</div>
+	      	<div class="padding">
+	    		<h2>Drink Prices</h2>
+	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+	    			<ti-segmented-control-button class="button-positive" title="'Cheap'"></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'OK'" selected></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Expensive'"></ti-segmented-control-button>
+	    		</ti-segmented-control>
+	      	</div>
+	      	<div class="padding">
+	    		<h2>Queue</h2>
+	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+	    			<ti-segmented-control-button class="button-positive" title="'None'"></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Small Line'" selected></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Big Line'"></ti-segmented-control-button>
+	    		</ti-segmented-control>
+	      	</div>
+	      	<div class="padding">
+	    		<h2>Entertainment</h2>
+	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+	    			<ti-segmented-control-button class="button-positive" title="'Sports'"></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'Band'" selected></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'DJ'"></ti-segmented-control-button>
+	    		</ti-segmented-control>
+	      	</div>				
+		</ion-list>
+	</ion-content>
+</ion-view>
