@@ -174,6 +174,10 @@ angular.module('starter.controllers', [])
 
       user.signUp(null, {
         success: function(user) {
+          var alertPopup = $ionicPopup.alert({
+             title: 'Success',
+             template: 'Thank you for registering'
+           });
 
           $ionicHistory.nextViewOptions({
             disableBack: true
@@ -213,7 +217,7 @@ angular.module('starter.controllers', [])
           disableBack: true
         });
 
-        $state.go('tab.dashboard');
+        $state.go('tab.tab-map');
       },
       error: function(user, error) {
         var alertPopup = $ionicPopup.alert({

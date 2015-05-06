@@ -1,31 +1,21 @@
 <ion-view view-title="Profile">  
   
   <ion-content scroll="true" padding="false">
-    
-    <ion-list>
-
-    <div class="list" ng-show="registerLogin">
-      
+          
       <div class="padding">
-        
         <ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
           <ti-segmented-control-button class="button-positive" title="'Male'"></ti-segmented-control-button>
           <ti-segmented-control-button class="button-positive" title="'Female'" selected></ti-segmented-control-button>
         </ti-segmented-control>
-      
       </div>
       
       <div class="padding">
-        
         <ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
           <ti-segmented-control-button class="button-positive" title="'Single'"></ti-segmented-control-button>
           <ti-segmented-control-button class="button-positive" title="'Relationship'" selected></ti-segmented-control-button>
         </ti-segmented-control>
-      
       </div>
       
-      <div class="list">
-        
         <label class="item item-input item-select">
           <div class="input-label">
             D.O.B.
@@ -36,9 +26,7 @@
             <option>1984</option>
           </select>
         </label>
-      
-      </div>    
-      
+            
       <div class="list">
         
         <label class="item item-input item-select">
@@ -86,12 +74,7 @@
       
       </div>
 
-      <button class="button button-positive" style="width: 100%;" ng-click="login(loginEmail, loginPassword)">Save</button>
-    
-    </div>
-
-    </ion-list>
-    
+      <button class="button button-positive" style="width: 100%;" ng-click="login(loginEmail, loginPassword)">Save</button>    
     <!-- <button class="button button-block button-positive">
   		Save
     </button> -->
