@@ -256,7 +256,13 @@ angular.module('starter.controllers', [])
   //   content: 'Loading...',
   //   showBackdrop: false
   // });
+})
+
+.controller('ProfileCtrl', function($scope) {
+
 });
+
+
 
 // var app = angular.module('Gender', ['ti-segmented-control']);
 // app.controller('AppCtrl', function($scope){
