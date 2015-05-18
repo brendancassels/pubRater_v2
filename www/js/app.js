@@ -67,9 +67,9 @@ angular.module('starter', ['ionic', 'starter.filters', 'starter.controllers', 's
     }
   })
   .state('tab.rate', {
-    url: '/list/rate/:id',
+    url: '/rate/:id',
     views: {
-      'tab-rate': {
+      'tab-list': {
         templateUrl: 'templates/tab-rate.html',
         controller: 'RateCtrl'
       }
