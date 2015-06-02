@@ -1,5 +1,6 @@
-<ion-view view-title="Profile">  
+<ion-view view-title="Rate">  
 	<ion-content scroll="true" padding="false">
+<!-- 		<h2>{{ place.attributes.Venue_Name }}</h2> -->
 		<ion-list>
 			<div class="padding">
 	    		<h2>Time of Rating</h2>
@@ -9,45 +10,77 @@
 	    		</ti-segmented-control>
 	      	</div>
 	      	<div class="padding">
-	    		<h2>How Busy?</h2>
-	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
-	    			<ti-segmented-control-button class="button-positive" title="'Empty'"></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'Average'" selected></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'Packed'"></ti-segmented-control-button>
-	    		</ti-segmented-control>
+				<h2>How Busy</h2>
+				<div class="item range range-positive">
+					<i>Empty</i>
+					<input type="range" name="busy" min="0" max="100" value="50">
+					<i>Packed</i>
+				</div>			
 	      	</div>
 	      	<div class="padding">
-	    		<h2>Service Quality?</h2>
-	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
-	    			<ti-segmented-control-button class="button-positive" title="'Shit'"></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'OK'" selected></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'Awesome'"></ti-segmented-control-button>
-	    		</ti-segmented-control>
+	    		<h2>Service Quality</h2>
+	    		<div class="item range range-positive">
+					<i>Bad</i>
+					<input type="range" name="service" min="0" max="100" value="50">
+					<i>Awesome</i>
+				</div>
 	      	</div>
 	      	<div class="padding">
 	    		<h2>Drink Prices</h2>
-	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
-	    			<ti-segmented-control-button class="button-positive" title="'Cheap'"></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'OK'" selected></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'Expensive'"></ti-segmented-control-button>
-	    		</ti-segmented-control>
+	    		<div class="item range range-positive">
+					<i>Cheap</i>
+					<input type="range" name="price" min="0" max="100" value="50">
+					<i>Expensive</i>
+				</div>
 	      	</div>
 	      	<div class="padding">
 	    		<h2>Queue</h2>
-	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
-	    			<ti-segmented-control-button class="button-positive" title="'None'"></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'Small Line'" selected></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'Big Line'"></ti-segmented-control-button>
-	    		</ti-segmented-control>
+	    		<div class="item range range-positive">
+					<i>None</i>
+					<input type="range" name="queue" min="0" max="100" value="50">
+					<i>Hours</i>
+				</div>
 	      	</div>
 	      	<div class="padding">
 	    		<h2>Entertainment</h2>
-	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
-	    			<ti-segmented-control-button class="button-positive" title="'Sports'"></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'Band'" selected></ti-segmented-control-button>
-	    			<ti-segmented-control-button class="button-positive" title="'DJ'"></ti-segmented-control-button>
-	    		</ti-segmented-control>
-	      	</div>				
+	    		<ul class="list">
+				  	<li class="item item-checkbox">
+				     	<label class="checkbox">
+				       		<input type="checkbox">
+				     	</label>
+						Sports
+				  	</li>
+					<li class="item item-checkbox">
+				    	<label class="checkbox">
+				       		<input type="checkbox">
+				     	</label>
+				     	Live Music
+				  	</li>
+				  	<li class="item item-checkbox">
+				    	<label class="checkbox">
+				       		<input type="checkbox">
+				     	</label>
+				     	DJ
+				  	</li>
+				  	<li class="item item-checkbox">
+				    	<label class="checkbox">
+				       		<input type="checkbox">
+				     	</label>
+				     	Music
+				  	</li>
+				</ul>
+	      	</div>
+	      	<div class="padding">
+	    		<h2>Overall Rating</h2>
+	    		<div class="item range range-positive">
+					<i class="icon ion-thumbsdown"></i>
+					<input type="range" name="overall" min="0" max="100" value="50">
+					<i class="icon ion-thumbsup"></i>
+				</div>
+	      	</div>
+	      	<button class="button button-full button-positive">
+  				RATE
+			</button>			
 		</ion-list>
 	</ion-content>
 </ion-view>

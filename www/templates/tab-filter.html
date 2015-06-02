@@ -1,0 +1,110 @@
+<ion-view view-title="Filter">  
+	<ion-nav-buttons side="right">
+    	<a href="#/tab/tab-map" class="button-icon icon-right icon button ion-chevron-right">Back</a>
+  	</ion-nav-buttons>
+	<ion-content scroll="true" padding="false">
+<!-- 		<h2>{{ place.attributes.Venue_Name }}</h2> -->
+		<ion-list>
+			<div class="padding">
+	    		<h2>Statistics</h2>
+	    		<ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+	    			<ti-segmented-control-button class="button-positive" title="'Everyone'"></ti-segmented-control-button>
+	    			<ti-segmented-control-button class="button-positive" title="'People Like Me'"></ti-segmented-control-button>
+	    		</ti-segmented-control>
+	      	</div>
+	      	
+			<ul class="list">
+			  	<li class="item item-checkbox">
+			     	<label class="checkbox">
+			       		<input type="checkbox">
+			     	</label>
+					How Busy
+					<div class="item range range-positive">
+						<i>Empty</i>
+						<input type="range" name="busy" min="0" max="100" value="50">
+						<i>Packed</i>
+					</div>		
+			  	</li>
+				<li class="item item-checkbox">
+			    	<label class="checkbox">
+			       		<input type="checkbox">
+			     	</label>
+			     	Service Quality
+			     	<div class="item range range-positive">
+						<i>Bad</i>
+						<input type="range" name="service" min="0" max="100" value="50">
+						<i>Awesome</i>
+					</div>
+			  	</li>
+			  	<li class="item item-checkbox">
+			    	<label class="checkbox">
+			       		<input type="checkbox">
+			     	</label>
+			     	Drink Prices
+			     	<div class="item range range-positive">
+						<i>Cheap</i>
+						<input type="range" name="price" min="0" max="100" value="50">
+						<i>Expensive</i>
+					</div>
+			  	</li>
+			  	<li class="item item-checkbox">
+			    	<label class="checkbox">
+			       		<input type="checkbox">
+			     	</label>
+			     	Queue
+			     	<div class="item range range-positive">
+						<i>None</i>
+						<input type="range" name="queue" min="0" max="100" value="50">
+						<i>Hours</i>
+					</div>
+			  	</li>
+			  	<li class="item item-checkbox">
+			    	<label class="checkbox">
+			       		<input type="checkbox">
+			     	</label>
+			     	Entertainment
+			     	<ul class="list">
+					  	<li class="item item-checkbox">
+					     	<label class="checkbox">
+					       		<input type="checkbox">
+					     	</label>
+							Sports
+					  	</li>
+						<li class="item item-checkbox">
+					    	<label class="checkbox">
+					       		<input type="checkbox">
+					     	</label>
+					     	Live Music
+					  	</li>
+					  	<li class="item item-checkbox">
+					    	<label class="checkbox">
+					       		<input type="checkbox">
+					     	</label>
+					     	DJ
+					  	</li>
+					  	<li class="item item-checkbox">
+					    	<label class="checkbox">
+					       		<input type="checkbox">
+					     	</label>
+					     	Music
+					  	</li>
+					</ul>
+			  	</li>
+			  	<li class="item item-checkbox">
+			    	<label class="checkbox">
+			       		<input type="checkbox">
+			     	</label>
+			     	Overall Rating
+			     	<div class="item range range-positive">
+						<i class="icon ion-thumbsdown"></i>
+						<input type="range" name="overall" min="0" max="100" value="50">
+						<i class="icon ion-thumbsup"></i>
+					</div>
+			  	</li>
+			</ul>
+	     	<button class="button button-full button-positive">
+  				FILTER
+			</button>			
+		</ion-list>
+	</ion-content>
+</ion-view>

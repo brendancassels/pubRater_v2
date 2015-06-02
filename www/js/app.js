@@ -74,6 +74,15 @@ angular.module('starter', ['ionic', 'starter.filters', 'starter.controllers', 's
         controller: 'RateCtrl'
       }
     }
+  })
+  .state('tab.filter', {
+    url: '/filter',
+    views: {
+      'tab-map': {
+        templateUrl: 'templates/tab-filter.html',
+        controller: 'FilterCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/map');

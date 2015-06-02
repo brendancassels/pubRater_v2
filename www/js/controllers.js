@@ -251,7 +251,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('RateCtrl', function($scope, $ionicLoading) {
-  debugger;
+  // $scope.loading = $ionicLoading.show({
+  //   content: 'Loading...',
+  //   showBackdrop: false
+  // });
+})
+
+.controller('FilterCtrl', function($scope, $ionicLoading) {
   // $scope.loading = $ionicLoading.show({
   //   content: 'Loading...',
   //   showBackdrop: false
