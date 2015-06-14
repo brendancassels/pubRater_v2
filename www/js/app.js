@@ -71,7 +71,7 @@ angular.module('starter', ['ionic', 'starter.filters', 'starter.controllers', 's
     views: {
       'tab-list': {
         templateUrl: 'templates/tab-rate.html',
-        controller: 'RateCtrl'
+        controller: 'RatingCtrl'
       }
     }
   })

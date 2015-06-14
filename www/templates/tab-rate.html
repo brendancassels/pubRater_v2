@@ -8,12 +8,16 @@
 	    			<ti-segmented-control-button class="button-positive" title="'Now'"></ti-segmented-control-button>
 	    			<ti-segmented-control-button class="button-positive" title="'Past'" selected></ti-segmented-control-button>
 	    		</ti-segmented-control>
+	    		<label class="item item-input">
+  					<span class="input-label">Date</span>
+  					<input type="date">
+				</label>
 	      	</div>
 	      	<div class="padding">
 				<h2>How Busy</h2>
 				<div class="item range range-positive">
 					<i>Empty</i>
-					<input type="range" name="busy" min="0" max="100" value="50">
+					<input type="range" ng-model="ratingBusy" min="0" max="100" value="50">
 					<i>Packed</i>
 				</div>			
 	      	</div>
@@ -21,7 +25,7 @@
 	    		<h2>Service Quality</h2>
 	    		<div class="item range range-positive">
 					<i>Bad</i>
-					<input type="range" name="service" min="0" max="100" value="50">
+					<input type="range" name="ratingService" min="0" max="100" value="50">
 					<i>Awesome</i>
 				</div>
 	      	</div>
@@ -29,7 +33,7 @@
 	    		<h2>Drink Prices</h2>
 	    		<div class="item range range-positive">
 					<i>Cheap</i>
-					<input type="range" name="price" min="0" max="100" value="50">
+					<input type="range" name="ratingPrice" min="0" max="100" value="50">
 					<i>Expensive</i>
 				</div>
 	      	</div>
@@ -37,7 +41,7 @@
 	    		<h2>Queue</h2>
 	    		<div class="item range range-positive">
 					<i>None</i>
-					<input type="range" name="queue" min="0" max="100" value="50">
+					<input type="range" name="ratingQueue" min="0" max="100" value="50">
 					<i>Hours</i>
 				</div>
 	      	</div>
@@ -78,7 +82,7 @@
 					<i class="icon ion-thumbsup"></i>
 				</div>
 	      	</div>
-	      	<button class="button button-full button-positive">
+	      	<button ng-click="addRating(ratingBusy, Place)" class="button button-full button-positive">
   				RATE
 			</button>			
 		</ion-list>

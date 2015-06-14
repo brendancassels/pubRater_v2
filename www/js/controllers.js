@@ -111,18 +111,25 @@ angular.module('starter.controllers', [])
     showBackdrop: false
   });
   function loadPlace() {
-    var Places = Parse.Object.extend("Venue");
-    var query = new Parse.Query(Places);
-    query.equalTo("objectId", $stateParams.id);
-    query.first({
-      success: function(place) {
-        $scope.place = place; 
-        $scope.map.setCenter(new google.maps.LatLng(place.attributes.Venue_Location.latitude, place.attributes.Venue_Location.longitude));
-        $scope.map.setZoom(16);
-        var marker = new google.maps.Marker({
-          map: $scope.map,
-          position: new google.maps.LatLng(place.attributes.Venue_Location.latitude, place.attributes.Venue_Location.longitude)
-        });
+    Parse.Cloud.run('getPlace', { objectId: $stateParams.id }, {
+      success: function(place) {  
+        $scope.place = place;
+        var Places = Parse.Object.extend("Venue");
+        var query = new Parse.Query(Places);
+        query.equalTo("objectId", $stateParams.id);
+        query.first({
+          success: function(place) {
+            $scope.place = place; 
+            $scope.map.setCenter(new google.maps.LatLng(place.attributes.Venue_Location.latitude, place.attributes.Venue_Location.longitude));
+            $scope.map.setZoom(16);
+            var marker = new google.maps.Marker({
+              map: $scope.map,
+              position: new google.maps.LatLng(place.attributes.Venue_Location.latitude, place.attributes.Venue_Location.longitude)
+            });
+          }
+        })
+      }, 
+      error: function(error) {
       }
     })
     .then(function(places) {
@@ -250,11 +257,32 @@ angular.module('starter.controllers', [])
   });
 })
 
-.controller('RateCtrl', function($scope, $ionicLoading) {
-  // $scope.loading = $ionicLoading.show({
-  //   content: 'Loading...',
-  //   showBackdrop: false
-  // });
+.controller('RatingCtrl', function($scope, $state, $ionicHistory, $stateParams, $ionicPopup, $ionicLoading) {
+  //$scope.data = {};
+  //$scope.data.commentRating = 3;
+  $scope.addRating = function(ratingBusy, Place) {
+    var rating = new Parse.Rating();
+    rating.set("Busy", ratingBusy);
+    rating.set("Venue_ID", Place);
+    rating.signUp(null, {
+      success: function(rating) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Success',
+          template: 'Thank you for rating'
+         });
+        $ionicHistory.nextViewOptions({
+          disableBack: true
+        });
+        $state.go('tab.tab-map');
+      },
+      error: function(rating, error) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error',
+          template: 'Unable to successfully rate'
+        });
+      }
+    });
+  }; 
 })
 
 .controller('FilterCtrl', function($scope, $ionicLoading) {
