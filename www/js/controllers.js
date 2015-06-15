@@ -258,27 +258,37 @@ angular.module('starter.controllers', [])
 })
 
 .controller('RatingCtrl', function($scope, $state, $ionicHistory, $stateParams, $ionicPopup, $ionicLoading) {
-  //$scope.data = {};
-  //$scope.data.commentRating = 3;
-  $scope.addRating = function(ratingBusy, Place) {
-    var rating = new Parse.Rating();
-    rating.set("Busy", ratingBusy);
-    rating.set("Venue_ID", Place);
-    rating.signUp(null, {
-      success: function(rating) {
-        var alertPopup = $ionicPopup.alert({
-          title: 'Success',
-          template: 'Thank you for rating'
-         });
-        $ionicHistory.nextViewOptions({
-          disableBack: true
-        });
-        $state.go('tab.tab-map');
-      },
-      error: function(rating, error) {
-        var alertPopup = $ionicPopup.alert({
-          title: 'Error',
-          template: 'Unable to successfully rate'
+  $scope.data = {};
+  $scope.data.ratingBusy = 50;
+  $scope.addRating = function(ratingBusy) {
+    var Places = Parse.Object.extend("Places");
+    var query = new Parse.Query(Places);
+    query.equalTo("objectId", $stateParams.id);
+    query.first({
+      success: function(place) {
+        var Rating = Parse.Object.extend("Rating");
+        var rating = new Rating();
+        debugger;
+        rating.set("Busy", parseInt(ratingBusy));
+        rating.set("Venue_ID", place);
+        rating.set("createdBy", Parse.User.current());
+        rating.save(null, {
+          success: function(rating) {
+            var alertPopup = $ionicPopup.alert({
+              title: 'Success',
+              template: 'Thank you for rating'
+             });
+            $ionicHistory.nextViewOptions({
+              disableBack: true
+            });
+            $state.go('tab.tab-map');
+          },
+          error: function(rating, error) {
+            var alertPopup = $ionicPopup.alert({
+              title: 'Error',
+              template: 'Unable to successfully rate'
+            });
+          }
         });
       }
     });
