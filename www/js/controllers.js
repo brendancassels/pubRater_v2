@@ -260,7 +260,8 @@ angular.module('starter.controllers', [])
 .controller('RatingCtrl', function($scope, $state, $ionicHistory, $stateParams, $ionicPopup, $ionicLoading) {
   $scope.data = {};
   $scope.data.ratingBusy = 50;
-  $scope.addRating = function(ratingBusy) {
+  $scope.data.ratingService = 50;
+  $scope.addRating = function(ratingBusy, ratingService, ratingPrice, ratingQueue, ratingOverall, sports, liveMusic, dj, tab) {
     var Places = Parse.Object.extend("Places");
     var query = new Parse.Query(Places);
     query.equalTo("objectId", $stateParams.id);
@@ -268,8 +269,15 @@ angular.module('starter.controllers', [])
       success: function(place) {
         var Rating = Parse.Object.extend("Rating");
         var rating = new Rating();
-        debugger;
         rating.set("Busy", parseInt(ratingBusy));
+        rating.set("Service", parseInt(ratingService));
+        rating.set("Price", parseInt(ratingPrice));
+        rating.set("Queue", parseInt(ratingQueue));
+        rating.set("Overall_Rating", parseInt(ratingOverall));
+        rating.set("Sports", sports);
+        rating.set("Live_Music", liveMusic);
+        rating.set("DJ", dj);
+        rating.set("TAB", tab);
         rating.set("Venue_ID", place);
         rating.set("createdBy", Parse.User.current());
         rating.save(null, {

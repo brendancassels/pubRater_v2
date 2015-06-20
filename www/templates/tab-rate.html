@@ -25,7 +25,7 @@
 	    		<h2>Service Quality</h2>
 	    		<div class="item range range-positive">
 					<i>Bad</i>
-					<input type="range" name="ratingService" min="0" max="100" value="50">
+					<input type="range" ng-model="ratingService" min="0" max="100" value="50">
 					<i>Awesome</i>
 				</div>
 	      	</div>
@@ -33,7 +33,7 @@
 	    		<h2>Drink Prices</h2>
 	    		<div class="item range range-positive">
 					<i>Cheap</i>
-					<input type="range" name="ratingPrice" min="0" max="100" value="50">
+					<input type="range" ng-model="ratingPrice" min="0" max="100" value="50">
 					<i>Expensive</i>
 				</div>
 	      	</div>
@@ -41,7 +41,7 @@
 	    		<h2>Queue</h2>
 	    		<div class="item range range-positive">
 					<i>None</i>
-					<input type="range" name="ratingQueue" min="0" max="100" value="50">
+					<input type="range" ng-model="ratingQueue" min="0" max="100" value="50">
 					<i>Hours</i>
 				</div>
 	      	</div>
@@ -50,27 +50,27 @@
 	    		<ul class="list">
 				  	<li class="item item-checkbox">
 				     	<label class="checkbox">
-				       		<input type="checkbox">
+				       		<input type="checkbox" ng-model="sports">
 				     	</label>
 						Sports
 				  	</li>
 					<li class="item item-checkbox">
 				    	<label class="checkbox">
-				       		<input type="checkbox">
+				       		<input type="checkbox" ng-model="liveMusic">
 				     	</label>
 				     	Live Music
 				  	</li>
 				  	<li class="item item-checkbox">
 				    	<label class="checkbox">
-				       		<input type="checkbox">
+				       		<input type="checkbox" ng-model="dj">
 				     	</label>
 				     	DJ
 				  	</li>
 				  	<li class="item item-checkbox">
 				    	<label class="checkbox">
-				       		<input type="checkbox">
+				       		<input type="checkbox" ng-model="tab">
 				     	</label>
-				     	Music
+				     	TAB
 				  	</li>
 				</ul>
 	      	</div>
@@ -78,11 +78,11 @@
 	    		<h2>Overall Rating</h2>
 	    		<div class="item range range-positive">
 					<i class="icon ion-thumbsdown"></i>
-					<input type="range" name="overall" min="0" max="100" value="50">
+					<input type="range" ng-model="ratingOverall" min="0" max="100" value="50">
 					<i class="icon ion-thumbsup"></i>
 				</div>
 	      	</div>
-	      	<button ng-click="addRating(ratingBusy)" class="button button-full button-positive">
+	      	<button ng-click="addRating(ratingBusy, ratingService, ratingPrice, ratingQueue, ratingOverall, sports, liveMusic, dj, tab)" class="button button-full button-positive">
   				RATE
 			</button>			
 		</ion-list>
