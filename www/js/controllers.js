@@ -258,15 +258,42 @@ angular.module('starter.controllers', [])
 })
 
 .controller('RatingCtrl', function($scope, $state, $ionicHistory, $stateParams, $ionicPopup, $ionicLoading) {
-  $scope.data = {};
-  $scope.data.ratingBusy = 50;
-  $scope.data.ratingService = 50;
+  // $scope.data = {};
+  // $scope.data.ratingBusy = 50;
+  // $scope.data.ratingService = 50;
   $scope.addRating = function(ratingBusy, ratingService, ratingPrice, ratingQueue, ratingOverall, sports, liveMusic, dj, tab) {
-    var Places = Parse.Object.extend("Places");
+    var Places = Parse.Object.extend("Venue");
     var query = new Parse.Query(Places);
     query.equalTo("objectId", $stateParams.id);
     query.first({
       success: function(place) {
+        if (!ratingBusy) {
+          ratingBusy = 50;
+        };
+        if (!ratingService) {
+          ratingService = 50;
+        };
+        if (!ratingPrice) {
+          ratingPrice = 50;
+        };
+        if (!ratingQueue) {
+          ratingQueue = 0;
+        };
+        if (!ratingOverall) {
+          ratingOverall = 50;
+        };
+        if (!sports) {
+          sports = false;
+        };
+        if (!liveMusic) {
+          liveMusic = false;
+        };
+        if (!dj) {
+          dj = false;
+        };
+        if (!tab) {
+          tab = false;
+        };
         var Rating = Parse.Object.extend("Rating");
         var rating = new Rating();
         rating.set("Busy", parseInt(ratingBusy));
@@ -291,7 +318,7 @@ angular.module('starter.controllers', [])
             });
             $state.go('tab.tab-map');
           },
-          error: function(rating, error) {
+          error: function(post, error) {
             var alertPopup = $ionicPopup.alert({
               title: 'Error',
               template: 'Unable to successfully rate'

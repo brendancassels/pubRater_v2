@@ -6,7 +6,10 @@
     <ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh()">
     </ion-refresher>
     <h2>{{ place.attributes.Venue_Name }}</h2>
-    <p>{{ place.attributes.Venue_Website }}</p>
+    <!-- <p>{{ place.attributes.Venue_Website }}</p> -->
     <map on-create="mapCreated(map)" data-tap-disabled="true" style="height: 200px;"></map>
+    <h4>{{ place.attributes.Authors_Review }}</h4>
+    <h2>Average Rating: {{ place.attributes.Overall_Rating_Average }}</h2>
+    <h2>Number of Ratings: {{ place.attributes.Num_Ratings }}</h2>
   </ion-content>
 </ion-view>
