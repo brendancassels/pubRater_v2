@@ -21,19 +21,22 @@ Parse.Cloud.define("getPlace", function(request, response) {
   });
 });
 
-Parse.Cloud.afterSave("Ratings", function(request) {
-  var rating = request.object.get("Rating");
-  var place = request.object.get("Venue");
-  var query = new Parse.Query("Ratings");
-  query.equalTo("Venue", place);
+Parse.Cloud.afterSave("Rating", function(request) {
+
+  var rating = request.object.get("Overall_Rating");
+  var place = request.object.get("Venue_ID");
+  var query = new Parse.Query("Rating");
+  console.log(rating);
+  query.equalTo("Venue_ID", place);
   query.find({
-    success: function(rating) {
+    success: function(allRatings) {
       var sum = 0;
-      for (var i = 0; i < rating.length; ++i) {
-        sum += rating[i].get("Rating");
+      console.log(allRatings.length);
+      for (var i = 0; i < allRatings.length; ++i) {
+        sum += allRatings[i].get("Overall_Rating");
       };
-      var aveRating = (sum / rating.length);
-      var numberRatings = rating.length;
+      var aveRating = (sum / allRatings.length);
+      var numberRatings = allRatings.length;
       var query = new Parse.Query("Venue");
       query.equalTo("objectId", place.id);
       query.first({

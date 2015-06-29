@@ -1,21 +1,21 @@
 <ion-view view-title="Profile">  
   <ion-content scroll="true" padding="false">
     <div class="padding">
-      <ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+      <ti-segmented-control on-select="genderbutton($index)" style="width: 100%;">
         <ti-segmented-control-button class="button-positive" title="'Male'"></ti-segmented-control-button>
-        <ti-segmented-control-button class="button-positive" title="'Female'" selected></ti-segmented-control-button>
+        <ti-segmented-control-button class="button-positive" title="'Female'"></ti-segmented-control-button>
       </ti-segmented-control>
     </div>
     <div class="padding">
-      <ti-segmented-control on-select="buttonClicked($index)" style="width: 100%;">
+      <ti-segmented-control on-select="relationshipbutton($index)" style="width: 100%;">
         <ti-segmented-control-button class="button-positive" title="'Single'"></ti-segmented-control-button>
-        <ti-segmented-control-button class="button-positive" title="'Relationship'" selected></ti-segmented-control-button>
+        <ti-segmented-control-button class="button-positive" title="'Relationship'"></ti-segmented-control-button>
       </ti-segmented-control>
     </div>  
     <div class="list">
       <label class="item item-input item-select">
         D.O.B.
-        <input type="date">
+        <input ng-model="dob" type="date">
       </label>
     </div>        
     <div class="list">    
@@ -23,9 +23,10 @@
         <div class="input-label">
           Profession
         </div>
-        <select>
+        <select ng-model="occupation">
+          <option></option>
           <option>Office</option>
-          <option selected>Construction</option>
+          <option>Construction</option>
           <option>Teaching</option>
           <option>Retail</option>
           <option>Student</option>
@@ -37,9 +38,10 @@
         <div class="input-label">
           Preferred Beverage
         </div>
-        <select>
+        <select ng-model="prefbev">
+          <option></option>
           <option>Beer</option>
-          <option selected>Spirits</option>
+          <option>Spirits</option>
           <option>Wine</option>
           <option>Cocktails</option>
         </select>
@@ -50,13 +52,14 @@
         <div class="input-label">
           Preferred Venue Type
         </div>
-        <select>
+        <select ng-model="prefvenue">
+          <option></option>        
           <option>Pub</option>
-          <option selected>Club</option>
+          <option>Club</option>
         </select>
       </label>
     </div>
-    <button ng-click="addDetails()" class="button button-full button-positive">
+    <button ng-click="addDetails(occupation, prefbev, prefvenue, dob)" class="button button-full button-positive">
           SAVE
       </button>     
   </ion-content>

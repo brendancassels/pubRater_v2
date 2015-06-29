@@ -101,7 +101,13 @@ angular.module('starter.controllers', [])
  //   })
  // }
 
-.controller('PlaceCtrl', function($scope, $stateParams, $ionicLoading) {
+.controller('PlaceCtrl', function($scope, $stateParams, $ionicLoading, $ionicAnalytics) {
+  
+  $ionicAnalytics.track('View', {
+    item_id: 123,
+    item_name: "View Venue"
+  });
+
   loadPlace();
   $scope.mapCreated = function(map) {
     $scope.map = map;
@@ -147,11 +153,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('LoginRegisterCtrl', function($scope, $ionicPopup, $state, $ionicHistory) {
- 
   $scope.registerLogin = true;
-
   $scope.selectLoginRegister = function(index) {
-
     if (index === 0) {
       //alert("x");
       $scope.registerLogin = true;
@@ -160,83 +163,63 @@ angular.module('starter.controllers', [])
       //$scope.register = true;
       $scope.registerLogin = false;
     }
-
     $scope.$apply();
   }
-
   $scope.register = function(registerFirstName, registerLastName, registerEmail, registerPassword) {
-
     if (registerFirstName && registerFirstName && registerEmail && registerPassword) {
-
       // create a new user object (note the the username and email are the same)
       var user = new Parse.User();
       user.set("username", registerEmail);
       user.set("password", registerPassword);
       user.set("email", registerEmail);
-       
       // set the other fields
       user.set("firstName", registerFirstName);
       user.set("lastName", registerLastName);
- 
-
       user.signUp(null, {
         success: function(user) {
           var alertPopup = $ionicPopup.alert({
              title: 'Success',
              template: 'Thank you for registering'
            });
-
           $ionicHistory.nextViewOptions({
             disableBack: true
           });
-
           $state.go('tab.tab-map');
-
         },
         error: function(user, error) {
-
           var alertPopup = $ionicPopup.alert({
              title: 'Error',
              template: 'Unable to successfully register'
-           });
+          });
         }
       });
-
     } else {
-
       var alertPopup = $ionicPopup.alert({
          title: 'Missing Fields',
          template: 'Please enter all the required fields'
-       });
+      });
     }
   }
-
   $scope.login = function(loginUsername, loginPassword) {
-
     Parse.User.logIn(loginUsername, loginPassword, {
       success: function(user) {
         var alertPopup = $ionicPopup.alert({
            title: 'Welcome Back',
            template: 'It\'s great to see you again!'
-         });
-
+        });
         $ionicHistory.nextViewOptions({
           disableBack: true
         });
-
         $state.go('tab.tab-map');
       },
       error: function(user, error) {
         var alertPopup = $ionicPopup.alert({
            title: 'Error',
            template: 'Unable to log you in'
-         });
+        });
       }
     });
-
   }
-
-
 })
 
 .controller('ListCtrl', function($scope, $ionicLoading) {
@@ -257,10 +240,11 @@ angular.module('starter.controllers', [])
   });
 })
 
-.controller('RatingCtrl', function($scope, $state, $ionicHistory, $stateParams, $ionicPopup, $ionicLoading) {
-  // $scope.data = {};
-  // $scope.data.ratingBusy = 50;
-  // $scope.data.ratingService = 50;
+.controller('RatingCtrl', function($scope, $state, $ionicHistory, $stateParams, $ionicPopup, $ionicLoading, $ionicAnalytics) {
+  $ionicAnalytics.track('Rate', {
+    item_id: 123,
+    item_name: "Rate Venue"
+  });
   $scope.addRating = function(ratingBusy, ratingService, ratingPrice, ratingQueue, ratingOverall, sports, liveMusic, dj, tab) {
     var Places = Parse.Object.extend("Venue");
     var query = new Parse.Query(Places);
@@ -338,7 +322,51 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ProfileCtrl', function($scope) {
-
+  $scope.genderbutton = function(index) {
+    var gender;
+    if(index == 0){
+      gender = "male";
+    } else {
+      gender = "female";
+    };
+    var user = Parse.User.current();
+    user.set("Gender", gender);
+    user.save(null, {
+      success: function() {
+      },
+      error: function(error) {
+      }
+    });
+  };
+  $scope.relationshipbutton = function(index) {
+    var relationship;
+    if(index ==  0){
+      relationship = "single";
+    } else {
+      relationship = "relationship";
+    };
+    var user = Parse.User.current();
+    user.set("RelationStat", relationship);
+    user.save(null, {
+      success: function() {
+      },
+      error: function(error) {
+      }
+    });
+  };
+  $scope.addDetails = function(occupation, prefbev, prefvenue, dob){
+    var user = Parse.User.current();
+    user.set("DOB", dob);
+    user.set("Profession", occupation);
+    user.set("PreferBev", prefbev);
+    user.set("PreferVenue", prefvenue);
+    user.save(null, {
+      success: function() {
+      },
+      error: function(error) {
+      }
+    });
+  }
 });
 
 
